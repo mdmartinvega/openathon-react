@@ -1,0 +1,50 @@
+/* Header.scss */
+
+// Import variables.scss file
+@import 'assets/styles/common/variables';
+
+.Header{
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: $space-s $space-m;
+    border-bottom: 1px solid $border-color;
+
+    .Header__logo{
+        img{
+            max-width: 150px;
+        }
+    }
+
+    .Header__menu{
+        display: flex;
+        flex: 0 1 auto;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        align-items: center;
+
+        nav{
+            ul{
+                margin: 0;
+                li{
+                    float: left;
+                    margin: 0 $space-s;
+                    list-style: none;
+                    a{
+                        color: $text-color;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .Header__title{
+        font-size: 1rem;
+        text-align: left;
+    }
+}
