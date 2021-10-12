@@ -1,9 +1,10 @@
 import React from "react";
 import { Menu } from '../../components';
 import './Header.css';
+import propTypes from 'prop-types';
+
 
 class Header extends React.Component {
-    //Instructions go here
     render() {
         return(
             //JSX expression
@@ -17,7 +18,14 @@ class Header extends React.Component {
            <Menu /> 
         </div>
     );
+    
     }
+    
+
+}
+
+Header.propTypes = {
+    logo: propTypes.string
 }
 
 export default Header;
