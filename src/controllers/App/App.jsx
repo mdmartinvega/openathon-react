@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Footer } from '../../components';
+import { Header, Footer, Loader, Notification } from '../../components';
 import { Fetch } from '../../services/api'
 
 const FETCH_OPTIONS = {
@@ -15,10 +15,14 @@ class App extends Component {
             <Fetch path={'general'} options={FETCH_OPTIONS}>
                 {({ data, loading, error }) => {
                     if (error) {
-                        return <p>{error.message}</p>;
+                      return (
+                        <Notification type="error"
+                            message= {error.message}
+                        />
+                    );
                     }
                     if (loading) {
-                        return <p>Loading ...</p>;
+                      return <Loader />;
                     }
                     if (data && data.logo) {
                         return <Header logo={data.logo} />
