@@ -4,6 +4,7 @@ import Footer from './Footer/Footer';
 import Loader from './Loader/Loader';
 import Notification from './Notification/Notification';
 import Info from './Info/Info';
+import ListBasic from './ListBasic/ListBasic';
 
 export {
     Header,
@@ -11,5 +12,6 @@ export {
     Notification,
     Info,
     Menu,
-    Footer
+    Footer,
+    ListBasic
 };
