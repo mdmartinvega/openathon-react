@@ -8,7 +8,7 @@ class Menu extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            expandedMenu: false
+            expandedMenu: true
         };
         this.toggleMenu = this.toggleMenu.bind(this);
     }

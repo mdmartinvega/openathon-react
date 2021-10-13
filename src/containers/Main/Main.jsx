@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
-import { Home, Services, Innovation, Guestbook} from '../../containers';
+import { Home, Services, Innovation, Guestbook, NotFound} from '../../containers';
 import './Main.css';
 
 class Main extends React.Component {
@@ -12,6 +12,7 @@ class Main extends React.Component {
                     <Route path="/services" component={Services} />
                     <Route path="/innovation" component={Innovation} />
                     <Route path="/guestbook" component={Guestbook} />
+                    <Route path="*" component={NotFound} />
                 </Switch>
             </div>
         );
