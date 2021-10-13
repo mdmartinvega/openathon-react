@@ -1,6 +1,7 @@
 import React from 'react';
 import './ListBasic.css';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const defaultProps = {
     title: null,
@@ -24,6 +25,12 @@ class ListBasic extends React.PureComponent {
                             return (
                                 <article key={`service-${item.id}`}
                                     className="ListBasic__item">
+                                    {this.props.fields.includes('internal_link') && this.props.url &&
+                                        <Link className="ListBasic__link--internal"
+                                            to={`${this.props.url}${item.id}`}>
+                                            <i className="ListBasic__link__icon"></i>
+                                        </Link>
+                                    }
                                     {this.props.fields.includes('image') &&
                                         <div className="ListBasic__image">
                                             {item.image_link &&
