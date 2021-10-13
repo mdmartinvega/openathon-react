@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import { Header, Footer, Loader, Notification } from '../../components';
-import { Fetch } from '../../services/api';
+import { Header, Footer } from '../../components';
 import { BrowserRouter } from 'react-router-dom';
-
-const FETCH_OPTIONS = {
-  method: 'GET',
-  headers: {}
-};
+import { Main } from '../../containers';
 
 class App extends Component {
 
@@ -15,30 +10,8 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <div className="App__root">
-
-            <Fetch path={'general'} options={FETCH_OPTIONS}>
-              {({ data, loading, error }) => {
-                if (error) {
-                  return (
-                    <Notification type="error"
-                      message={error.message}
-                    />
-                  );
-                }
-                if (loading) {
-                  return <Loader />;
-                }
-                if (data && data.logo) {
-                  return <Header logo={data.logo} />
-                }
-                return <p>No data yet ...</p>;
-              }}
-            </Fetch>
-
-            <p className="Main">
-              Main content
-            </p>
-            
+            <Header />
+            <Main />
             <Footer />
           </div>
         </BrowserRouter>
