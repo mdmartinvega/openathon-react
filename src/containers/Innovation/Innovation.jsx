@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ListBasic, ListItemDetail, Loader, Notification } from '../../components';
-import { Fetch } from '../../services/api';
+import { Get } from '../../services/api';
 import './Innovation.css';
 
 
@@ -14,7 +14,7 @@ class Innovation extends React.Component {
                     <h1>Innovation</h1>
                 </header>
                 <section className="Innovation__container">
-                    <Fetch url="innovation" method="get">
+                    <Get url="innovation" fetchAfterMount>
                         {({ data, loading, error }) => {
                             if (error) {
                                 return (
@@ -66,7 +66,7 @@ class Innovation extends React.Component {
                             }
                             return <Loader />;
                         }}
-                    </Fetch>
+                    </Get>
                 </section>
             </div>
         );

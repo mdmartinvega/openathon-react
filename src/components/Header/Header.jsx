@@ -1,14 +1,17 @@
 import React from "react";
 import { Menu, Notification, Loader } from '../../components';
 import './Header.css';
-import { Fetch } from '../../services/api';
+import { Get } from '../../services/api';
 
 
 class Header extends React.Component {
     render() {
         return(
         <div className="Header">
-            <Fetch url="general" method="get">
+            <div className="Header__logo">
+                    {
+                    <Get url="general" fetchAfterMount>
+            
             {({ data, loading, error }) => {
                 if (error) {
                     return (
@@ -29,7 +32,11 @@ class Header extends React.Component {
                 }
                 return <Loader />;
             }}
-            </Fetch>
+            
+             </Get>
+            }
+        </div>
+        <h1 className="Header__title">II OPENATHON Custom Open Cloud</h1>
             <Menu />
         </div>
     );
