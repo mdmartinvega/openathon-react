@@ -3,16 +3,12 @@ import { Menu, Notification, Loader } from '../../components';
 import './Header.css';
 import { Fetch } from '../../services/api';
 
-const FETCH_OPTIONS = {
-    method: 'GET',
-    headers: {}
-};
 
 class Header extends React.Component {
     render() {
         return(
         <div className="Header">
-            <Fetch path={'general'} options={FETCH_OPTIONS}>
+            <Fetch url="general" method="get">
             {({ data, loading, error }) => {
                 if (error) {
                     return (

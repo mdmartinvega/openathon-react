@@ -3,18 +3,13 @@ import { Fetch } from '../../services/api'
 import { Info, ListBasic, Loader, Notification} from '../../components';
 import './Home.css';
 
-const FETCH_OPTIONS = {
-    method: 'GET',
-    headers: {}
-};
-
 
 class Home extends React.Component {
     render() {
         return (
             <div className="Home" location={this.props.location}>
                 <div className="Home__info">
-                    <Fetch path={'general'} options={FETCH_OPTIONS}>
+                    <Fetch url="general" method="get">
                         {({ data, loading, error }) => {
                             if (error) {
                                 return (
@@ -41,7 +36,7 @@ class Home extends React.Component {
             
                 <div className="Home__list">
                     <div className="Home__services">
-                        <Fetch path={'services'} options={FETCH_OPTIONS}>
+                        <Fetch url="services" method="get">
                             {({ data, loading, error }) => {
                                 if (error) {
                                     return (
@@ -66,7 +61,7 @@ class Home extends React.Component {
                         </Fetch>
                     </div>
                     <div className="Home__innovation">
-                        <Fetch path={'innovation'} options={FETCH_OPTIONS}>
+                        <Fetch url="innovation" method="get">
                             {({ data, loading, error }) => {
                                 if (error) {
                                     return (

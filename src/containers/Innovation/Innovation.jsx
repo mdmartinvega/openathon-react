@@ -4,10 +4,6 @@ import { ListBasic, ListItemDetail, Loader, Notification } from '../../component
 import { Fetch } from '../../services/api';
 import './Innovation.css';
 
-const FETCH_OPTIONS = {
-    method: 'GET',
-    headers: {}
-};
 
 class Innovation extends React.Component {
     render() {
@@ -18,7 +14,7 @@ class Innovation extends React.Component {
                     <h1>Innovation</h1>
                 </header>
                 <section className="Innovation__container">
-                <Fetch path="innovation" options={FETCH_OPTIONS}>
+                    <Fetch url="innovation" method="get">
                         {({ data, loading, error }) => {
                             if (error) {
                                 return (

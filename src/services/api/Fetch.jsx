@@ -1,7 +1,19 @@
 import React from 'react';
+import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const API_HOST = 'http://localhost:3001/';
 
+
+const defaultProps = {
+    fetchAfterMount: true,
+    url: null,
+    method: 'get',
+    baseURL: 'http://localhost:3001/',
+    headers: {
+        "Content-type": "application/json; charset=UTF-8",
+    }
+}
 
 class Fetch extends React.Component {
 
@@ -18,23 +30,41 @@ class Fetch extends React.Component {
     //with the same construct allows to handle both synchronous and asynchronous errors and it’s much easier to debug. 
     //Use setState() to store the returned data/error.
 
-    fetchData = async () => {
+    fetchData = async() => {
         this.setState({ loading: true });
+        const { children, fetchAfterMount, ...requestConfig } = this.props;
         try {
-            const data = await (await fetch(`${API_HOST}${this.props.path}`, this.props.options)).json();
-            this.setState({ data, loading: false });
+            const response = await axios(requestConfig);
+            this.setState({ data: response.data, loading: false});
         } catch (error) {
-            this.setState({ error, loading: false });
+            this.setState({ error, loading: false});
         }
     }
+    
 
-    componentDidMount() { 
-        this.fetchData();
+    componentDidMount() {
+        if (this.props.fetchAfterMount) this.fetchData();
     }
 
     render() {
-        return this.props.children(this.state);
+        const {
+            state: { data, loading, error },
+            props: { children },
+            fetchData
+        } = this;
+    
+        return children({
+            data,
+            loading,
+            error,
+            fetchData
+        });
     }
+}
+
+Fetch.defaultProps = defaultProps;
+Fetch.propTypes = {
+    url: PropTypes.string.isRequired
 }
 
 export default Fetch;
